@@ -25,7 +25,7 @@ class HashTable:
         '''
         return hash(key)
 
-
+# STRETCH
     def _hash_djb2(self, key):
         '''
         Hash an arbitrary key using DJB2 hash
@@ -54,7 +54,18 @@ class HashTable:
 
         Fill this in.
         '''
-        pass
+        # HASH KEY
+        # GET INDEX FROM HASH_MOD
+        id = self._hash_mod(self._hash(key))
+        print(f'INDEX: {id}\nKEY: {key}\nVALUE: {value}')
+        print(f'CURRENTLY STORED: {self.storage[id]}\nIS NONE: {self.storage[id] is None}\n~~~~~~~~~~~~~~~~~~~~~~')
+        # CHECK IF INDEX IS ALREADY TAKEN
+        # IF [INDEX] IS NOT NONE
+        if self.storage[id] is not None:
+            # THROW ERROR
+            print('ERROR')
+        # PLACE KEY:VALUE PAIR AS TUPLE IN DESIGNATED INDEX
+        self.storage[id] = (key, value)
 
 
 
@@ -66,7 +77,20 @@ class HashTable:
 
         Fill this in.
         '''
-        pass
+        print('\nCURRENT ARRAY', self.storage)
+        # LOOP THROUGH THE ARRAY'S KEYS
+        for keys in self.storage:
+        # CHECK IF KEY:VALUE PAIR IS IN ARRAY
+            if keys is not None:
+            # FIND MATCH
+                if keys[0] == key:
+                # RETURN VALUE
+                    # print('FOUND IT', keys[1])
+                    # print('\nCURRENT ARRAY', self.storage)
+                    # print(f'KEY FOUND... REMOVING {keys}')
+                    keys = None
+                    # print('AFTER REMOVAL', keys)
+                    return keys
 
 
     def retrieve(self, key):
@@ -77,7 +101,22 @@ class HashTable:
 
         Fill this in.
         '''
-        pass
+        # print('\nCURRENT ARRAY', self.storage)
+        # LOOP THROUGH THE ARRAY'S KEYS
+        for keys in self.storage:
+        # CHECK IF KEY:VALUE PAIR IS IN ARRAY
+            if keys is not None:
+            # FIND MATCH
+                if keys[0] == key:
+                # RETURN VALUE
+                    # print('FOUND IT', keys[1])
+                    # print('\nCURRENT ARRAY', self.storage)
+                    return keys[1]
+        # DIDN'T FIND MATCH
+            # RETURN NONE
+        # print('\nCURRENT ARRAY', self.storage)
+        # print('IT\'S NOT IN STORAGE', self.storage)
+        return None
 
 
     def resize(self):
